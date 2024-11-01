@@ -1,0 +1,15 @@
+version: 1
+
+services:
+  - type: web
+    name: MMNCT  # Replace with your service name
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    publishDirectory: build  # Make sure this matches your build output
+    routes:
+      - src: /assets
+        dest: /assets
+      - src: /(.*)
+        dest: /index.html
